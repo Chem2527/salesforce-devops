@@ -10,8 +10,7 @@ This repository demonstrates a basic Salesforce DevOps workflow using the Salesf
 - [Salesforce CLI (`sf`)](https://developer.salesforce.com/tools/sfdxcli) installed  
 - [Git](https://git-scm.com/) installed  
 - [Visual Studio Code](https://code.visualstudio.com/) (recommended)
-- [github](https://github.com)
-- Salesforce Extension Pack for VS Code (optional but helpful)
+- Salesforce Extension Pack for VS Code 
 
 ---
 
