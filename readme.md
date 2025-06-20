@@ -6,11 +6,16 @@ This repository demonstrates a basic Salesforce DevOps workflow using the Salesf
 
 ## Prerequisites
 
-- Salesforce Developer Org(s)  
-- [Salesforce CLI (`sf`)](https://developer.salesforce.com/tools/sfdxcli) installed  
+- Salesforce Developer Org(s)
+- [install node](https://nodejs.org/en)
 - [Git](https://git-scm.com/) installed  
 - [Visual Studio Code](https://code.visualstudio.com/) (recommended)
-- Salesforce Extension Pack for VS Code 
+- Salesforce Extension Pack for VS Code
+- run below command for sf installation
+  ```bash
+  npm install --global @salesforce/cli
+  sf --version
+  ```
 
 ---
 
