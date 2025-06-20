@@ -21,6 +21,7 @@ This repository demonstrates a basic Salesforce DevOps workflow using the Salesf
 ```bash
 sf force:project:create -n salesforce-demo
 cd salesforce-demo
+```
 2. Log in to Multiple Salesforce Orgs and Set Aliases
 bash
 Copy
