@@ -4,7 +4,7 @@ This repository demonstrates a modern Salesforce DevOps workflow using the Sales
 
 ---
 
-## ✅ Prerequisites
+##   Prerequisites
 
 - Salesforce Developer Org with **Dev Hub enabled**
 - [Node.js](https://nodejs.org/en) installed
@@ -15,7 +15,7 @@ This repository demonstrates a modern Salesforce DevOps workflow using the Sales
   ```bash
   npm install --global @salesforce/cli
   sf --version
-🚀 Setup and Usage
+  Setup and Usage
 1. Create a New Salesforce DX Project
 bash
 Copy
@@ -118,7 +118,7 @@ Copy
 Edit
 sf org login web --alias ProdOrg
 sf org login web --alias TestOrg
-✅ Summary
+  Summary
 Build DX project with sf
 
 Use Scratch Orgs for development with source tracking
