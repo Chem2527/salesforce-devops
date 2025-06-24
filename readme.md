@@ -31,6 +31,11 @@ cd salesforce-demo
 sf org login web --alias DevOrg
 sf org login web --alias TestOrg
 sf org login web --alias ProdOrg
+
+or
+
+sf org login device --set-default-dev-hub --alias DevHub
+
 3. Retrieve Apex Classes from a Specific Org
 
 sf retrieve metadata --metadata ApexClass --target-org DevOrg
