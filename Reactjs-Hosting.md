@@ -1,114 +1,133 @@
-# Deploy ReactJS App to Azure & Microsoft Teams
+# Deploy & Share ReactJS App with ngrok, Azure, and Microsoft Teams
 
-- Note: Using Go-Daddy for purchasing domain
+- Exposing your local ReactJS app using **ngrok**
+- Deploying your app to **Azure Static Web Apps**
+- Adding it to **Microsoft Teams** 
+- Connecting your app to a custom domain purchased via **GoDaddy**
 
-- Deploy a ReactJS app to Azure Static Web Apps
+---
 
- - Connect it to a custom domain like xyz.com(custom domain)
+##  STEP 1: Use ngrok for Local Testing
 
- - Integrate it into Microsoft Teams as a personal tab
+Use [ngrok](https://ngrok.com) to share your local React app (e.g., running on `http://localhost:3000`) with a publicly accessible URL.
 
- - Share it with your entire organization or use it individually
+### 1.1 Create an ngrok Account
 
-## PART 1: Deploy ReactJS App to Azure + xyz.com(custom domain)
-- STEP 1: Create a React App
+- Sign up at [https://ngrok.com](https://ngrok.com)
+
+### 1.2 Get Your Auth Token
+
+- Log in to the ngrok dashboard
+- Navigate to **Setup & Installation**
+- Copy your **Auth Token**
+
+### 1.3 Configure ngrok on Your Machine
 
 ```bash
+ngrok config add-authtoken YOUR_TOKEN_HERE
+1.4 Start a Tunnel for Your React App
+If your React app runs on port 3000, start the tunnel:
+
+bash
+Copy
+Edit
+ngrok http 3000
+This will generate a public URL like:
+
+arduino
+Copy
+Edit
+https://d3cf-157-50-100-160.ngrok-free.app
+ Share this URL for quick demos or testing without deploying!
+
+ STEP 2: Deploy ReactJS App to Azure + xyz.com (Custom Domain)
+2.1 Create a React App
+bash
+Copy
+Edit
 npx create-react-app my-react-app
-```
-```bash
 cd my-react-app
-```
--  STEP 2: Build for Production
-```bash
+2.2 Build for Production
+bash
+Copy
+Edit
 npm run build
-```
-- This creates a build/ folder containing static production-ready files.
+This creates a build/ folder containing optimized static files.
 
-- STEP 3: Create an Azure Static Web App
+2.3 Create an Azure Static Web App
+Visit https://portal.azure.com
 
-- Go to  https://portal.azure.com
-
--Click "Create a Resource" → Search: Static Web App → Click Create
+Click Create a Resource → Search: Static Web App → Create
 
 Fill in the form:
 
-- Field	Value
-- Subscription	Your Azure subscription
-- Resource Group	Create new (e.g. react-rg)
-- Name	  react-webapp
-- Region	Closest to your location
+Field	Value
+Subscription	Your Azure subscription
+Resource Group	Create new (e.g. react-rg)
+Name	react-webapp
+Region	Closest to your location
+Hosting Plan	Free
+Deployment Source	Other (manual deployment)
 
-- Hosting Plan	Free
-- Deployment Source	Other (manual deployment)
+Click Review + Create → then Create
 
-- Click Review + Create → then Create
+2.4 Deploy Your React App to Azure
+Login to Azure CLI:
 
-- STEP 4: Deploy React App to Azure
- - Install Azure CLI
-
-- Login to Azure
-
-```bash
+bash
+Copy
+Edit
 az login
-```
-- Install Azure Static Web Apps CLI
+Install Azure Static Web Apps CLI:
 
-```bash
+bash
+Copy
+Edit
 npm install -g @azure/static-web-apps-cli
-```
+Deploy the built app:
 
-- Deploy your build
+bash
+Copy
+Edit
+swa deploy ./build --app-name react-webapp --env production
+2.5 Add Your Custom Domain (e.g. xyz.com)
+Go to your Static Web App in the Azure Portal
 
-```bash
-swa deploy ./build --app-name   react-webapp --env production
-```
-- STEP 5: Add Your Custom Domain (xyz.com(custom domain))
-- Go to the Static Web App in Azure Portal
+Click Custom domains → + Add
 
-- Click Custom domains → + Add
+Enter your domain: xyz.com
 
-- Enter your domain: xyz.com(custom domain)
+Azure will provide required DNS records (CNAME or A Record)
 
-- Azure will show DNS records (CNAME or A record) you need to add in GoDaddy
+2.6 Configure DNS in GoDaddy
+Visit https://godaddy.com
 
-- STEP 6: Configure DNS in GoDaddy
-- Go to  https://godaddy.com
+Go to DNS settings for xyz.com
 
-- Open DNS Settings for xyz.com(custom domain)
+Add a CNAME or A Record from Azure
 
-- Add a CNAME record:
+Field	Value from Azure
+Type	CNAME
+Host	@
+Points to	*.azurestaticapps.net
+TTL	1 hour (or default)
 
-- Field	Value from Azure
-- Type	CNAME
-- Host	@
-- Points to	*.azurestaticapps.net
-- TTL	1 hour (or default)
+2.7 Enable HTTPS Automatically
+Wait ~30 minutes to 2 hours
 
-- If Azure gave you an A record, use that IP instead.
+Azure will verify the domain and apply a free SSL certificate
 
-- STEP 7: Enable HTTPS (Auto)
+ Your ReactJS app is now live at:
 
--  Wait 30 minutes to 2 hours.
-
-- Azure will detect your domain
-
-- Automatically verify ownership
-
-- Enable HTTPS with a free SSL certificate
-
-
-Your ReactJS app is now live at:
-
-```bash
-https://xyz.com(custom domain)
-```
- 
-## PART 2: Add React App to Microsoft Teams
-
--  STEP 1: Create the manifest.json
-
-```bash
+arduino
+Copy
+Edit
+https://xyz.com
+ STEP 3: Add React App to Microsoft Teams
+3.1 Create a manifest.json
+json
+Copy
+Edit
 {
   "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
   "manifestVersion": "1.16",
@@ -117,9 +136,9 @@ https://xyz.com(custom domain)
   "packageName": "com.sai.reactapp",
   "developer": {
     "name": "Saikrishna",
-    "websiteUrl": "https://xyz.com(custom domain)",
-    "privacyUrl": "https://xyz.com(custom domain)/privacy",
-    "termsOfUseUrl": "https://xyz.com(custom domain)/terms"
+    "websiteUrl": "https://xyz.com",
+    "privacyUrl": "https://xyz.com/privacy",
+    "termsOfUseUrl": "https://xyz.com/terms"
   },
   "name": {
     "short": "SaiApp",
@@ -134,58 +153,60 @@ https://xyz.com(custom domain)
     {
       "entityId": "home",
       "name": "Sai App",
-      "contentUrl": "https://xyz.com(custom domain)",
+      "contentUrl": "https://xyz.com",
       "scopes": [ "personal" ]
     }
   ],
   "permissions": [ "identity" ],
-  "validDomains": [ "xyz.com(custom domain)" ]
+  "validDomains": [ "xyz.com" ]
 }
-```
- - Replace "YOUR-GUID-HERE" with a generated GUID (use guidgenerator.com)
- - Replace URLs with your actual domain and pages
+Replace "YOUR-GUID-HERE" with a real GUID (guidgenerator.com)
 
-- STEP 2: Package the Teams App
+Replace all URLs with your actual domain
 
-- Create a folder called teams-app:
+3.2 Package Your Teams App
+Create the folder structure:
 
-```bash
-
+bash
+Copy
+Edit
 teams-app/
 └── manifest.json
-```
+Zip the contents:
 
-Zip it:
-
-```bash
+bash
+Copy
+Edit
 cd teams-app
 zip -r teams-app.zip *
-```
+3.3 Upload to Microsoft Teams (Individual Use)
+Go to https://dev.teams.microsoft.com
 
-- PART 3A: Upload to Microsoft Teams (Individual)
+Click Apps → + New App
 
-- Go to  https://dev.teams.microsoft.com
+Choose Upload a custom app
 
-- Click Apps → + New App
+Upload teams-app.zip
 
-- Choose Upload a custom app
+Click Install or Add to Teams
 
-- Upload your teams-app.zip
+ The app will now be visible only to you
 
-- Click Install or Add to Teams
+3.4 Publish Org-Wide (All Users) — Optional
+Requires Teams Admin Access
 
- - The app is now available only for you.
+Go to https://admin.teams.microsoft.com
 
-- PART 3B: Publish Org-Wide (All Users)
+Navigate to:
+Teams apps → Manage apps → Upload new app
 
-- Requires Teams Admin access.
+Upload your teams-app.zip
 
-- STEP 1: Upload to Teams Admin Center
+🎉 You're All Set!
+You’ve now:
 
-- Go to  https://admin.teams.microsoft.com
+ Shared your local React app with ngrok
 
-- Navigate to:
-- Teams apps → Manage apps → Upload new app
+ Deployed it to Azure Static Web Apps with a custom domain
 
-- Upload your teams-app.zip
-
+ Integrated it into Microsoft Teams as a personal tab app
