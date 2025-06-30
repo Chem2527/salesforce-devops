@@ -11,7 +11,7 @@
  - Share it with your entire organization or use it individually
 
 ## PART 1: Deploy ReactJS App to Azure + xyz.com(custom domain)
- - STEP 1: Create a React App
+- STEP 1: Create a React App
 
 ```bash
 npx create-react-app my-react-app
@@ -44,7 +44,7 @@ Fill in the form:
 
 - Click Review + Create → then Create
 
- - STEP 4: Deploy React App to Azure
+- STEP 4: Deploy React App to Azure
  - Install Azure CLI
 
 - Login to Azure
@@ -63,7 +63,7 @@ npm install -g @azure/static-web-apps-cli
 ```bash
 swa deploy ./build --app-name sai-react-webapp --env production
 ```
- - STEP 5: Add Your Custom Domain (xyz.com(custom domain))
+- STEP 5: Add Your Custom Domain (xyz.com(custom domain))
 - Go to the Static Web App in Azure Portal
 
 - Click Custom domains → + Add
