@@ -11,10 +11,9 @@ Visit https://ngrok.com and sign up for a free account.
 
 - Locate your Auth Token (under Setup & Installation).
 
-- Step 3: Install ngrok CLI
-- Download and install ngrok from https://ngrok.com/download for your OS.
 
-- Step 4: Configure ngrok with Your Auth Token
+
+- Step 3: Configure ngrok with Your Auth Token
 - 
 - Run below command in your terminal, replacing YOUR_TOKEN_HERE with your actual token:
 
@@ -22,7 +21,7 @@ Visit https://ngrok.com and sign up for a free account.
 ngrok config add-authtoken YOUR_TOKEN_HERE
 ```
 
-- Step 5: Start an ngrok Tunnel to Your Local React App
+- Step 4: Start an ngrok Tunnel to Your Local React App
 - For my case React app runs locally on port 3000, run:
 
 ```bash
