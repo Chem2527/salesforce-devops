@@ -1,112 +1,115 @@
- Deploy ReactJS App to Azure & Microsoft Teams (Org-Wide + Personal Use)
-This guide walks you through how to:
+# Deploy ReactJS App to Azure & Microsoft Teams (Org-Wide + Personal Use)
 
- Deploy a ReactJS app to Azure Static Web Apps
 
- Connect it to a custom domain like xyz.com
 
- Integrate it into Microsoft Teams as a personal tab
 
- Share it with your entire organization or use it individually
+- Deploy a ReactJS app to Azure Static Web Apps
 
- PART 1: Deploy ReactJS App to Azure + xyz.com
- STEP 1: Create a React App
-bash
-Copy
-Edit
+ - Connect it to a custom domain like xyz.com
+
+ - Integrate it into Microsoft Teams as a personal tab
+
+ - Share it with your entire organization or use it individually
+
+## PART 1: Deploy ReactJS App to Azure + xyz.com
+ - STEP 1: Create a React App
+
+```bash
 npx create-react-app my-react-app
+```
+```bash
 cd my-react-app
- STEP 2: Build for Production
-bash
-Copy
-Edit
+```
+-  STEP 2: Build for Production
+```bash
 npm run build
-This creates a build/ folder containing static production-ready files.
+```
+- This creates a build/ folder containing static production-ready files.
 
-STEP 3: Create an Azure Static Web App
-Go to  https://portal.azure.com
+- STEP 3: Create an Azure Static Web App
 
-Click "Create a Resource" → Search: Static Web App → Click Create
+- Go to  https://portal.azure.com
+
+-Click "Create a Resource" → Search: Static Web App → Click Create
 
 Fill in the form:
 
-Field	Value
-Subscription	Your Azure subscription
-Resource Group	Create new (e.g. react-rg)
-Name	sai-react-webapp
-Region	Closest to your location
-Hosting Plan	Free
-Deployment Source	Other (manual deployment)
+- Field	Value
+- Subscription	Your Azure subscription
+- Resource Group	Create new (e.g. react-rg)
+- Name	sai-react-webapp
+- Region	Closest to your location
 
-Click Review + Create → then Create
+- Hosting Plan	Free
+- Deployment Source	Other (manual deployment)
 
- STEP 4: Deploy React App to Azure
-Install Azure CLI
- Install Guide
+- Click Review + Create → then Create
 
-Login to Azure
+ - STEP 4: Deploy React App to Azure
+ - Install Azure CLI
 
-bash
-Copy
-Edit
+- Login to Azure
+
+```bash
 az login
-Install Azure Static Web Apps CLI
+```
+- Install Azure Static Web Apps CLI
 
-bash
-Copy
-Edit
+```bash
 npm install -g @azure/static-web-apps-cli
-Deploy your build
+```
 
-bash
-Copy
-Edit
+- Deploy your build
+
+```bash
 swa deploy ./build --app-name sai-react-webapp --env production
- STEP 5: Add Your Custom Domain (xyz.com)
-Go to the Static Web App in Azure Portal
+```
+ - STEP 5: Add Your Custom Domain (xyz.com)
+- Go to the Static Web App in Azure Portal
 
-Click Custom domains → + Add
+- Click Custom domains → + Add
 
-Enter your domain: xyz.com
+- Enter your domain: xyz.com
 
-Azure will show DNS records (CNAME or A record) you need to add in GoDaddy
+- Azure will show DNS records (CNAME or A record) you need to add in GoDaddy
 
- STEP 6: Configure DNS in GoDaddy
-Go to  https://godaddy.com
+- STEP 6: Configure DNS in GoDaddy
+- Go to  https://godaddy.com
 
-Open DNS Settings for xyz.com
+- Open DNS Settings for xyz.com
 
-Add a CNAME record:
+- Add a CNAME record:
 
-Field	Value from Azure
-Type	CNAME
-Host	@
-Points to	*.azurestaticapps.net
-TTL	1 hour (or default)
+- Field	Value from Azure
+- Type	CNAME
+- Host	@
+- Points to	*.azurestaticapps.net
+- TTL	1 hour (or default)
 
-If Azure gave you an A record, use that IP instead.
+- If Azure gave you an A record, use that IP instead.
 
- STEP 7: Enable HTTPS (Auto)
-Wait 30 minutes to 2 hours.
+- STEP 7: Enable HTTPS (Auto)
 
-Azure will detect your domain
+-  Wait 30 minutes to 2 hours.
 
-Automatically verify ownership
+- Azure will detect your domain
 
- Enable HTTPS with a free SSL certificate
+- Automatically verify ownership
+
+- Enable HTTPS with a free SSL certificate
 
 
 Your ReactJS app is now live at:
 
-arduino
-Copy
-Edit
+```bash
 https://xyz.com
- PART 2: Add React App to Microsoft Teams
- STEP 1: Create the manifest.json
-json
-Copy
-Edit
+```
+ 
+## PART 2: Add React App to Microsoft Teams
+
+-  STEP 1: Create the manifest.json
+
+```bash
 {
   "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
   "manifestVersion": "1.16",
@@ -139,45 +142,51 @@ Edit
   "permissions": [ "identity" ],
   "validDomains": [ "xyz.com" ]
 }
- Replace "YOUR-GUID-HERE" with a generated GUID (use guidgenerator.com)
- Replace URLs with your actual domain and pages
+```
+ - Replace "YOUR-GUID-HERE" with a generated GUID (use guidgenerator.com)
+ - Replace URLs with your actual domain and pages
 
- STEP 2: Package the Teams App
-Create a folder called teams-app:
+- STEP 2: Package the Teams App
 
-pgsql
-Copy
-Edit
+- Create a folder called teams-app:
+
+```bash
+
 teams-app/
 └── manifest.json
+```
+
 Zip it:
 
-bash
-Copy
-Edit
+```bash
 cd teams-app
 zip -r teams-app.zip *
- PART 3A: Upload to Microsoft Teams (Individual)
-Go to  https://dev.teams.microsoft.com
+```
 
-Click Apps → + New App
+- PART 3A: Upload to Microsoft Teams (Individual)
 
-Choose Upload a custom app
+- Go to  https://dev.teams.microsoft.com
 
-Upload your teams-app.zip
+- Click Apps → + New App
 
-Click Install or Add to Teams
+- Choose Upload a custom app
 
- The app is now available only for you.
+- Upload your teams-app.zip
 
-PART 3B: Publish Org-Wide (All Users)
-Requires Teams Admin access.
+- Click Install or Add to Teams
 
- STEP 1: Upload to Teams Admin Center
-Go to  https://admin.teams.microsoft.com
+ - The app is now available only for you.
 
-Navigate to:
-Teams apps → Manage apps → Upload new app
+- PART 3B: Publish Org-Wide (All Users)
 
-Upload your teams-app.zip
+- Requires Teams Admin access.
+
+- STEP 1: Upload to Teams Admin Center
+
+- Go to  https://admin.teams.microsoft.com
+
+- Navigate to:
+- Teams apps → Manage apps → Upload new app
+
+- Upload your teams-app.zip
 
