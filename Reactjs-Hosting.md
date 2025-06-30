@@ -39,7 +39,7 @@ ngrok http 3000
 ```bash
 https://d3cf-157-50-100-160.ngrok-free.app
 ```
--  Share this URL for quick demos or testing without deploying!
+-  This will works till our reactjs runs in  testing env and as long as traffic forwards from app to ngrok.This is not gd for Prod env.
 
 ## STEP 2: Deploy ReactJS App to Azure + xyz.com (Custom Domain)
   
