@@ -2,7 +2,6 @@
 
 
 
-
 - Deploy a ReactJS app to Azure Static Web Apps
 
  - Connect it to a custom domain like xyz.com
