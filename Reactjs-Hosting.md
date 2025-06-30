@@ -4,13 +4,13 @@
 
 - Deploy a ReactJS app to Azure Static Web Apps
 
- - Connect it to a custom domain like xyz.com
+ - Connect it to a custom domain like xyz.com(custom domain)
 
  - Integrate it into Microsoft Teams as a personal tab
 
  - Share it with your entire organization or use it individually
 
-## PART 1: Deploy ReactJS App to Azure + xyz.com
+## PART 1: Deploy ReactJS App to Azure + xyz.com(custom domain)
  - STEP 1: Create a React App
 
 ```bash
@@ -63,19 +63,19 @@ npm install -g @azure/static-web-apps-cli
 ```bash
 swa deploy ./build --app-name sai-react-webapp --env production
 ```
- - STEP 5: Add Your Custom Domain (xyz.com)
+ - STEP 5: Add Your Custom Domain (xyz.com(custom domain))
 - Go to the Static Web App in Azure Portal
 
 - Click Custom domains → + Add
 
-- Enter your domain: xyz.com
+- Enter your domain: xyz.com(custom domain)
 
 - Azure will show DNS records (CNAME or A record) you need to add in GoDaddy
 
 - STEP 6: Configure DNS in GoDaddy
 - Go to  https://godaddy.com
 
-- Open DNS Settings for xyz.com
+- Open DNS Settings for xyz.com(custom domain)
 
 - Add a CNAME record:
 
@@ -101,7 +101,7 @@ swa deploy ./build --app-name sai-react-webapp --env production
 Your ReactJS app is now live at:
 
 ```bash
-https://xyz.com
+https://xyz.com(custom domain)
 ```
  
 ## PART 2: Add React App to Microsoft Teams
@@ -117,9 +117,9 @@ https://xyz.com
   "packageName": "com.sai.reactapp",
   "developer": {
     "name": "Saikrishna",
-    "websiteUrl": "https://xyz.com",
-    "privacyUrl": "https://xyz.com/privacy",
-    "termsOfUseUrl": "https://xyz.com/terms"
+    "websiteUrl": "https://xyz.com(custom domain)",
+    "privacyUrl": "https://xyz.com(custom domain)/privacy",
+    "termsOfUseUrl": "https://xyz.com(custom domain)/terms"
   },
   "name": {
     "short": "SaiApp",
@@ -134,12 +134,12 @@ https://xyz.com
     {
       "entityId": "home",
       "name": "Sai App",
-      "contentUrl": "https://xyz.com",
+      "contentUrl": "https://xyz.com(custom domain)",
       "scopes": [ "personal" ]
     }
   ],
   "permissions": [ "identity" ],
-  "validDomains": [ "xyz.com" ]
+  "validDomains": [ "xyz.com(custom domain)" ]
 }
 ```
  - Replace "YOUR-GUID-HERE" with a generated GUID (use guidgenerator.com)
