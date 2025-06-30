@@ -18,7 +18,7 @@ Use [ngrok](https://ngrok.com) to share your local React app (In my case Reactjs
 ### 1.2 Get Your Auth Token
 
 - Log in to the ngrok dashboard
-- Navigate to **Setup & Installation**
+- Navigate to **Your Authtoken** which is on top left
 - Copy your **Auth Token**
 
 ### 1.3 Configure ngrok on Your Machine
