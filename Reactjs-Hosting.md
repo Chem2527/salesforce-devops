@@ -36,7 +36,7 @@ Fill in the form:
 - Field	Value
 - Subscription	Your Azure subscription
 - Resource Group	Create new (e.g. react-rg)
-- Name	sai-react-webapp
+- Name	  react-webapp
 - Region	Closest to your location
 
 - Hosting Plan	Free
@@ -61,7 +61,7 @@ npm install -g @azure/static-web-apps-cli
 - Deploy your build
 
 ```bash
-swa deploy ./build --app-name sai-react-webapp --env production
+swa deploy ./build --app-name   react-webapp --env production
 ```
 - STEP 5: Add Your Custom Domain (xyz.com(custom domain))
 - Go to the Static Web App in Azure Portal
