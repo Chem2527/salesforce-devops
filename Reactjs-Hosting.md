@@ -1,6 +1,6 @@
 # Deploy ReactJS App to Azure & Microsoft Teams
 
-
+- Note: Using Go-Daddy for purchasing domain
 
 - Deploy a ReactJS app to Azure Static Web Apps
 
