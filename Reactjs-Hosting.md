@@ -1,4 +1,4 @@
-# Deploy ReactJS App to Azure & Microsoft Teams (Org-Wide + Personal Use)
+# Deploy ReactJS App to Azure & Microsoft Teams
 
 
 
