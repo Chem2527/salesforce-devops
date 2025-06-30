@@ -9,7 +9,7 @@
 
 ##  STEP 1: Use ngrok for Local Testing
 
-Use [ngrok](https://ngrok.com) to share your local React app (e.g., running on `http://localhost:3000`) with a publicly accessible URL.
+Use [ngrok](https://ngrok.com) to share your local React app (In my case Reactjs is already running on  `http://localhost:3000`) with a publicly accessible URL.
 
 ### 1.1 Create an ngrok Account
 
