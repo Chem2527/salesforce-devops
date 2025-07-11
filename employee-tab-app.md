@@ -1,4 +1,4 @@
-# Manual Deployment & Automation for Azure Static Web Apps
+# Manual Deployment procedure for Azure Static Web Apps
  1. Create Azure Static Web App (employee-tab-app)
      
 ## Prerequisites:
