@@ -1,5 +1,5 @@
 # Manual Deployment & Automation for Azure Static Web Apps
-- 1. Create Azure Static Web App (employee-tab-app)
+ 1. Create Azure Static Web App (employee-tab-app)
      
 ## Prerequisites:
 - Azure account
@@ -7,7 +7,8 @@
 - Node.js and npm installed
 
 - Azure CLI install:
-  ```bash
+
+   ```bash
  https://learn.microsoft.com/en-us/cli/azure/install-azure-cli
  ```
 
