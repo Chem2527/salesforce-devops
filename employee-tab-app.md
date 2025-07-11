@@ -18,7 +18,7 @@ npm install -g @azure/static-web-apps-cli
 ```
 ## Step-by-step: Created a Static Web App in Azure
 
-### 1. domain URL
+### 1. Domain URL
 ```bash
 https://orange-desert-0dd7ef91e.2.azurestaticapps.net
 ```
