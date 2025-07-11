@@ -1,6 +1,6 @@
-------------------------------------------------------
 
-		Employee tab app
+# Employee tab app
+
 ```bash
 swa deploy ./dist \
   --app-name employee-tab-app \
@@ -9,10 +9,7 @@ swa deploy ./dist \
 ```
 
 
-
----------------------------------------------------------
-
-		Fulfiller app
+# Fulfiller app
 
 
 ```bash
@@ -21,4 +18,4 @@ swa deploy ./dist \
   --resource-group MS_Teams_Project \
   --env production
 ```
---------------------------------------------------
+
