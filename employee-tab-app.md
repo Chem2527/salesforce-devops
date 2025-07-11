@@ -7,8 +7,7 @@
 - Node.js and npm installed
 
 - Azure CLI install:
-
-   ```bash
+ ```bash
  https://learn.microsoft.com/en-us/cli/azure/install-azure-cli
  ```
 
