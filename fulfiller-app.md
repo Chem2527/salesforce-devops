@@ -1,6 +1,7 @@
 
 
-Deployment Procedure for Azure Static Web App: fulfiller-app
+# Deployment Procedure for Azure Static Web App: fulfiller-app
+
 This guide provides the full procedure to provision and deploy the fulfiller-app React microfrontend to Azure Static Web Apps using the SWA CLI.
 
 ✅ Prerequisites
