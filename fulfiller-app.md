@@ -1,91 +1,87 @@
-
-
 # Deployment Procedure for Azure Static Web App: fulfiller-app
 
-This guide provides the full procedure to provision and deploy the fulfiller-app React microfrontend to Azure Static Web Apps using the SWA CLI.
+## Prerequisites:
 
-✅ Prerequisites
-Ensure the following tools and services are set up:
+- **Ensure you have the following set up:**
 
-✅ Azure account (with access to the correct subscription)
+- Azure account 
 
-✅ Node.js and npm installed
+- Node.js and npm installed
 
-✅ Azure CLI installed
-📘 Install Azure CLI
+- Azure CLI installed
 
-✅ Azure Static Web Apps CLI installed:
+- Azure Static Web Apps CLI installed:
 
-bash
-Copy
-Edit
+```bash
 npm install -g @azure/static-web-apps-cli
-🏗️ Step 1: Provision the Azure Static Web App
-This is a one-time step — skip if fulfiller-app is already created.
+```
 
-Go to the Azure Portal
-Navigate to: Create a Resource → Static Web App
+## Step 1: Provision the Azure Static Web App
 
-Fill out the creation form:
 
-App name: fulfiller-app
+- Go to the Azure Portal
 
-Resource group: MS_Teams_Project (use existing or create new)
+- Navigate to: Create a Resource → Static Web App
 
-Hosting Plan: Select Free
+- Fill in the form:
 
-Region: Choose an appropriate region (e.g. East US)
+  - App name:  fulfiller-app
 
-Deployment Source: Select Other (No source) for manual CLI deployment
+  - Resource group: MS_Teams_Project (create if not already present)
 
-Click Review + Create, then Create
+  - Hosting Plan: Select Free
 
-Once provisioned, you can find the default domain under the "Overview" tab:
+  - Region: West US 2
 
-bash
-Copy
-Edit
+  - Deployment Source: Choose Other (No source) — this allows manual deployment via CLI
+
+  - Click Review + Create, then Create
+
+  - Once provisioned, note the Default Domain (found in the "Overview" tab of the resource in the portal)
+
+```bash
 https://ambitious-desert-0c873a91e.1.azurestaticapps.net
-🛠️ Step 2: Build the App for Deployment
-From your app's root folder:
+```
 
-bash
-Copy
-Edit
+## Step 2: Build the App for Deployment
+
+- From your React project folder, run:
+
+```bash
 npm install
 npm run build
-This generates your deployable files in a folder like dist/ or build/.
+```
+- This should output your static files  into a folder like dist/
 
-Ensure the output folder includes:
+- Ensure the folder contains:
 
-index.html
+- index.html
 
-JavaScript bundles (remoteEntry.js, etc.)
+- remoteEntry.js
 
-Any assets your app needs
+- assets/ folder
 
-🚚 Step 3: Deploy to Azure using SWA CLI
-Deploy the built app using the following command:
+## Step 3: Deploy to Azure Using SWA CLI
 
-bash
-Copy
-Edit
+- Use the swa deploy command to publish your built app:
+
+```bash
 swa deploy ./dist \
-  --app-name fulfiller-app \
+  --app-name  fulfiller-app \
   --resource-group MS_Teams_Project \
   --env production
-Add --verbose for more detailed output if needed.
+```
 
-This will:
 
-Upload all files from the ./dist folder
+- This command will:
 
-Trigger a deployment to the production environment
+- Upload contents of ./dist to Azure
 
-🌐 Step 4: Access the Deployed App
-After deployment completes, access your app using:
+- Trigger deployment to the production environment
 
-bash
-Copy
-Edit
+## Step 4: Access the App
+Once deployed successfully, access your app at:
+
+```bash
 https://ambitious-desert-0c873a91e.1.azurestaticapps.net
+```
