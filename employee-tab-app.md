@@ -1,88 +1,87 @@
-#  Deployment procedure for Azure Static Web Apps for employee-tab-app
-✅ Prerequisites
-Ensure you have the following set up:
+# Deployment Procedure for Azure Static Web Apps – employee-tab-app
 
-✅ Azure account (with access to the correct subscription)
+## Prerequisites:
 
-✅ Node.js and npm installed
+- **Ensure you have the following set up:**
 
-✅ Azure CLI installed
-📘 Install Azure CLI
+- Azure account 
 
-✅ Azure Static Web Apps CLI installed:
+- Node.js and npm installed
 
-bash
-Copy
-Edit
+- Azure CLI installed
+
+- Azure Static Web Apps CLI installed:
+
+```bash
 npm install -g @azure/static-web-apps-cli
-🏗️ Step 1: Provision the Azure Static Web App
-You only need to do this once — skip if employee-tab-app is already created.
+```
 
-Go to the Azure Portal
-Navigate to: Create a Resource → Static Web App
+## Step 1: Provision the Azure Static Web App
 
-Fill in the form:
 
-App name: employee-tab-app
+- Go to the Azure Portal
 
-Resource group: MS_Teams_Project (create if not already present)
+- Navigate to: Create a Resource → Static Web App
 
-Hosting Plan: Select Free
+- Fill in the form:
 
-Region: Choose a global region close to your users (e.g. Central US)
+  - App name: employee-tab-app
 
-Deployment Source: Choose Other (No source) — this allows manual deployment via CLI
+  - Resource group: MS_Teams_Project (create if not already present)
 
-Click Review + Create, then Create
+  - Hosting Plan: Select Free
 
-Once provisioned, note the Default Domain:
+  - Region: West US 2
 
-bash
-Copy
-Edit
+  - Deployment Source: Choose Other (No source) — this allows manual deployment via CLI
+
+  - Click Review + Create, then Create
+
+  - Once provisioned, note the Default Domain (found in the "Overview" tab of the resource in the portal)
+
+```bash
 https://orange-desert-0dd7ef91e.2.azurestaticapps.net
-You can find this under the "Overview" tab of the resource in the portal.
+```
 
-🛠️ Step 2: Build the App for Deployment
-From your React project folder, run:
+## Step 2: Build the App for Deployment
 
-bash
-Copy
-Edit
+- From your React project folder, run:
+
+```bash
 npm install
 npm run build
-This should output your static files (HTML, JS, assets) into a folder like dist/ or build/.
+```
+- This should output your static files  into a folder like dist/
 
-Ensure it contains:
+- Ensure the folder contains:
 
-index.html
+- index.html
 
-Supporting JS files (e.g. remoteEntry.js)
+- remoteEntry.js
 
-Assets folder (if applicable)
+- assets/ folder
 
-🚚 Step 3: Deploy to Azure using SWA CLI
-Now use the swa deploy command to publish your built app:
+## Step 3: Deploy to Azure Using SWA CLI
 
-bash
-Copy
-Edit
+- Use the swa deploy command to publish your built app:
+
+```bash
 swa deploy ./dist \
   --app-name employee-tab-app \
   --resource-group MS_Teams_Project \
   --env production
-Optional: Add --verbose for detailed output.
+```
 
-The CLI will:
 
-Upload contents of ./dist to Azure
+- This command will:
 
-Trigger deployment to the production environment
+- Upload contents of ./dist to Azure
 
-🌐 Step 4: Access the App
+- Trigger deployment to the production environment
+
+## Step 4: Access the App
 Once deployed successfully, access your app at:
 
-bash
-Copy
-Edit
+```bash
 https://orange-desert-0dd7ef91e.2.azurestaticapps.net
+```
