@@ -60,6 +60,7 @@ npm run build
 - remoteEntry.js
 
 - assets/ folder
+- staticwebapp.config.json
 
 ## Step 3: Deploy to Azure Using SWA CLI
 
